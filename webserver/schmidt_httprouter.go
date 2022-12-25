@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2022-12-25 22:43:37
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-26 07:47:28
+ * @Last Modified time: 2022-12-26 07:48:24
  */
 package webserver
 
@@ -37,7 +37,7 @@ func (hs HostSwitch) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func Httprouter() {
-	//声明两个路由
+	// 声明两个路由
 	playRouter := httprouter.New()
 	playRouter.GET("/user/:name", UserInfo)
 	// httprouter 异常捕获
