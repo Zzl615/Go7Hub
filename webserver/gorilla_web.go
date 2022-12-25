@@ -2,9 +2,9 @@
  * @Author: Noaghzil
  * @Date:   2022-12-22 08:15:22
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-23 00:15:49
+ * @Last Modified time: 2022-12-25 11:17:35
  */
-package main
+package webserver
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ func ShowIndex(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "ShowIndex!")
 }
 
-func main() {
+func GorillaServer() {
 	r := http.NewServeMux()
 
 	// Only log requests to our admin dashboard to stdout
