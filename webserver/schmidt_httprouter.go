@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2022-12-25 22:43:37
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-26 07:48:24
+ * @Last Modified time: 2022-12-26 07:56:04
  */
 package webserver
 
@@ -37,10 +37,10 @@ func (hs HostSwitch) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func Httprouter() {
-	// 声明两个路由
+	// 01: 声明两个路由
 	playRouter := httprouter.New()
 	playRouter.GET("/user/:name", UserInfo)
-	// httprouter 异常捕获
+	// 02: 异常捕获
 	playRouter.PanicHandler = func(w http.ResponseWriter, r *http.Request, v interface{}) {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "error:%s", v)
@@ -48,11 +48,13 @@ func Httprouter() {
 
 	toolRouter := httprouter.New()
 	toolRouter.GET("/user/:name", ToolIndex)
+	// 03: 静态文件服务
+	toolRouter.ServeFiles("/static/*filepath", http.Dir("./"))
 
-	//分别用于处理不同的二级域名
+	// 04: 分别用于处理不同的二级域名
 	hostSwitch := make(HostSwitch)
-	hostSwitch["play.flysnow.org:12345"] = playRouter
-	hostSwitch["tool.flysnow.org:12345"] = toolRouter
-	//根据域名获取对应的Handler路由，然后调用处理（分发机制）
+	hostSwitch["127.0.0.1:8080"] = playRouter
+	hostSwitch["localhost:8080"] = toolRouter
+	// 05: 根据域名获取对应的Handler路由，然后调用处理（分发机制）
 	log.Fatal(http.ListenAndServe(":8080", hostSwitch))
 }

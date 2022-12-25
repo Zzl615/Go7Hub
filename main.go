@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2022-12-23 00:20:18
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-25 11:39:40
+ * @Last Modified time: 2022-12-26 07:48:49
  */
 package main
 
@@ -11,5 +11,5 @@ import (
 )
 
 func main() {
-	webserver.GorillaServer()
+	webserver.Httprouter()
 }
