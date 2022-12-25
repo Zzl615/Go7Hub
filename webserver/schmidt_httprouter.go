@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2022-12-25 22:43:37
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-26 07:45:05
+ * @Last Modified time: 2022-12-26 07:47:28
  */
 package webserver
 
@@ -40,6 +40,11 @@ func Httprouter() {
 	//声明两个路由
 	playRouter := httprouter.New()
 	playRouter.GET("/user/:name", UserInfo)
+	// httprouter 异常捕获
+	playRouter.PanicHandler = func(w http.ResponseWriter, r *http.Request, v interface{}) {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, "error:%s", v)
+	}
 
 	toolRouter := httprouter.New()
 	toolRouter.GET("/user/:name", ToolIndex)
