@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2022-12-23 00:20:18
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-25 11:15:25
+ * @Last Modified time: 2022-12-25 11:36:44
  */
 package webserver
 
@@ -23,7 +23,7 @@ func (h2 *handle2) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "handle two")
 }
 
-func net_http_server() {
+func NetHttpServer() {
 	handle1 := handle1{}
 	handle2 := handle2{}
 	//Handler:nil表明服务器使用默认的多路复用器DefaultServeMux
