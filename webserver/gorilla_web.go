@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2022-12-22 08:15:22
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2022-12-25 11:17:35
+ * @Last Modified time: 2022-12-25 11:39:37
  */
 package webserver
 
@@ -30,5 +30,5 @@ func GorillaServer() {
 	r.HandleFunc("/", ShowIndex)
 
 	// Wrap our server with our gzip handler to gzip compress all responses.
-	http.ListenAndServe(":8000", handlers.CompressHandler(r))
+	http.ListenAndServe(":8080", handlers.CompressHandler(r))
 }
