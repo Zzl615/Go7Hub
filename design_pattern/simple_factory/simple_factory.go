@@ -1,4 +1,4 @@
-package design_pattern
+package simplefactory
 
 import "fmt"
 
@@ -9,14 +9,14 @@ type API interface {
 
 // HiAPI is one of API implement
 type HiAPI struct {
-	word string = "Hi!"
+	word string
 }
 
-func (*HiAPI) Say(name string) string {
-	return fmt.Sprintf("%s, %s", HiAPI.word, name)
+func (a *HiAPI) Say(name string) string {
+	return fmt.Sprintf("%s, %s", a.word, name)
 }
 
 // NewAPI return API instance by type
 func NewAPI(t int) API {
-	return &HiAPI{}
+	return &HiAPI{word: "Hi"}
 }

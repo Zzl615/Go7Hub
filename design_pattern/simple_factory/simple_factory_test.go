@@ -1,14 +1,15 @@
-package design_pattern
+package simplefactory
 
 import (
 	"testing"
-	"github.com/Zzl615/Go7Hub/design_pattern"
+	"fmt"
 )
 
 // TestType1 test get hiapi with factory
-func TestType1(t *testing.T) {
+func TestHiAPI(t *testing.T) {
 	api := NewAPI(1)
 	s := api.Say("Tom")
+	fmt.Println("result of TestType1: ", s)
 	if s != "Hi, Tom" {
 		t.Fatal("Type1 test fail")
 	}
