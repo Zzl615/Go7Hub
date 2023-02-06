@@ -55,6 +55,26 @@ func (PlusOperatorFactory) Create() Operator {
 	}
 }
 
+// === 减法定义 ===
+
+// MinusOperator Operator 的实际减法实现
+type MinusOperator struct {
+	*OperatorBase
+}
+
+// Result 获取结果
+func (o MinusOperator) Result() int {
+	return o.a - o.b
+}
+
+type MinusOperatorFactory struct{}
+
+func (MinusOperatorFactory) Create() Operator {
+	return &MinusOperator{
+		OperatorBase: &OperatorBase{},
+	}
+}
+
 
 
 
