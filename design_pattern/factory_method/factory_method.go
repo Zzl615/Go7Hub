@@ -15,22 +15,13 @@ type OperatorFactory interface {
 	Create() Operator
 }
 
-// === 
+
+
+// ===  两数操作赋值 ===
 
 // OperatorBase 是Operator 接口实现的基类，封装公用方法
 type OperatorBase struct {
 	a, b int
-}
-
-// === PlusOperatorFactory
-
-// PlusOperatorFactory 是 PlusOperator 的工厂类
-type PlusOperatorFactory struct{}
-
-func (PlusOperatorFactory) Create() Operator {
-	return &PlusOperator{
-		OperatorBase: &OperatorBase{},
-	}
 }
 
 // SetA 设置 A
@@ -41,5 +32,29 @@ func (o *OperatorBase) SetA(a int) {
 // SetB 设置 B
 func (o *OperatorBase) SetB(b int) {
 	o.b = b
+}
+
+// === 加法定义 ===
+
+// PlusOperator Operator 的实际加法实现
+type PlusOperator struct {
+	*OperatorBase
+}
+
+// Result 获取结果
+func (o PlusOperator) Result() int {
+	return o.a + o.b
+}
+
+// PlusOperatorFactory 是 PlusOperator 的工厂类
+type PlusOperatorFactory struct{}
+
+func (PlusOperatorFactory) Create() Operator {
+	return &PlusOperator{
+		OperatorBase: &OperatorBase{},
+	}
+}
+
+
 
 
