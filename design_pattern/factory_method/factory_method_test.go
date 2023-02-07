@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2023-02-07 08:08:41
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2023-02-07 08:19:46
+ * @Last Modified time: 2023-02-07 08:22:08
  */
 package factory_method
 
@@ -21,14 +21,19 @@ func compute(factory OperatorFactory, a int, b int) int {
 func TestMinusOperator(t *testing.T) {
 	var factory OperatorFactory = MinusOperatorFactory{}
 	var result int = compute(factory, 1, 2)
+	fmt.Println("Result of TestMinusOperator: ", result)
 	if compute(factory, 1, 2) != -1 {
 		t.Fatal("error with MinusOperatorFactory")
 	}
-	fmt.Println("Result of TestMinusOperator: ", result)
+
 }
 
-// func TestPlusOperator() {
+func TestPlusOperator(t *testing.T) {
+	var factory OperatorFactory = PlusOperatorFactory{}
+	var result int = compute(factory, 1, 2)
+	fmt.Println("Result of TestPlusOperator: ", result)
+	if compute(factory, 1, 2) != 3 {
+		t.Fatal("error with TestPlusOperator")
+	}
 
-// 	fmt.Println("TestPlusOperator: ")
-
-// }
+}
