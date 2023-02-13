@@ -2,7 +2,7 @@
  * @Author: Noaghzil
  * @Date:   2023-02-11 22:21:20
  * @Last Modified by:   Noaghzil
- * @Last Modified time: 2023-02-12 09:29:13
+ * @Last Modified time: 2023-02-13 20:48:24
  */
 package builder
 
@@ -12,8 +12,8 @@ import (
 )
 
 func TestBuilder1(t *testing.T) {
-	var builder *Builder1 = &Builder1{}
-	var director *Director = NewDirector(builder)
+	var builder *Builder1[string] = &Builder1[string]{}
+	var director *Director[string] = NewDirector[string](builder)
 	director.Construct()
 	res := builder.GetResult()
 	fmt.Println("res: ", res)
@@ -23,8 +23,8 @@ func TestBuilder1(t *testing.T) {
 }
 
 func TestBuilder2(t *testing.T) {
-	builder := &Builder2{}
-	director := NewDirector(builder)
+	builder := &Builder2[int]{}
+	director := NewDirector[int](builder)
 	director.Construct()
 	res := builder.GetResult()
 	fmt.Println("res: ", res)
